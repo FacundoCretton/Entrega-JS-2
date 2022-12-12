@@ -69,9 +69,11 @@ main {
 }
 
 .form__field.error small {
-  color: #e70808;
+  color: #be0404;
   text-align: center;
   padding: 10px 0;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .form__field.success small {
