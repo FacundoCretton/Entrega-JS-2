@@ -1,12 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Entrega-JS-2</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
   </head>
   <body>
-    <script src="main.js"></script>
+    <main>
+      <form class="form__container" id="form">
+        <h1>¿Y el precio de la pizza?</h1>
+        <p class="form__title">
+          Para conocer el precio de tu pizza, ingresa un numero del 1 al 7 en el
+          recuadro de abajo, y se te indicara cual es el precio a abonar
+        </p>
+        <div class="form__field" id="input">
+          <input
+            type="number"
+            placeholder="código de la pizza"
+            class="form__input"
+            id="numero"
+          />
+          <small></small>
+
+          <input
+            type="submit"
+            class="form__submit__btn"
+            value="Enviar"
+            id="enviar"
+          />
+          <div class="form__render">
+            <h2></h2>
+            <h3></h3>
+          </div>
+        </div>
+      </form>
+    </main>
+
+    <script src="./main.js"></script>
   </body>
 </html>

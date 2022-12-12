@@ -55,43 +55,51 @@ const pizzas =[
 
 ]
 
-// a)  Las pizzas que tengan un id impar.
+const formField = document.getElementById("input");
+const pizzaInput = document.getElementById("numero");
+const formInput = document.getElementById("form");
 
-const idImpar = pizzas.filter( (pizza) => {
-    return pizza.id % 2 ===1;
 
+
+formInput.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const pizzaID = pizzaInput.value;
+    const pizza = pizzas.find(pizza => pizza.id == pizzaID);
+
+    if (pizzaID === "") {
+        
+        showError(pizzaID, `Debe ingresar un numero`);  
+    }
+    else if (pizza) {
+        
+       showSuccess(pizzaID,
+         `La pizza "${pizza.nombre}" tiene un precio de:`,
+          `$${pizza.precio}`);
+        
+    } else {
+        showError(pizzaID, `Ingrese un numero entre el 1 y el 7`);
+       
+    }
+
+        
+    
 });
-
-idImpar.forEach((pizza) =>{
-    console.log( `La pizza ${pizza.nombre} tiene una id impar `);
-});
-
-
-// b) ¿Hay alguna pizza que valga menos de $600?
-
-const pizzasConMenorPrecioA = (precio) => {
-    return pizzas.some ((pizza) => {
-        return pizza.precio < precio;
-    })
-      ? console.log (`hay pizzas que valen menos de $${precio}`)
-      : console.log(`no hay pizzas que valgan menos de $${precio}`);
+const showError = (input, message) => {
+	formField.classList.remove("success");
+	formField.classList.add("error");
+	const error = formField.querySelector("small");
+	error.textContent = message;
 };
 
-pizzasConMenorPrecioA(600)
-
-// c) El nombre de cada pizza con su respectivo precio.
-
-const PizzaPorNombreYPrecio = pizzas.filter ((pizza) => {
-    return pizza.nombre && pizza.precio}
-
-);
-
-PizzaPorNombreYPrecio.forEach( (pizza) => {
-    console.log( `La pizza de ${pizza.nombre} tiene un precio de $${pizza.precio} `);
+const showSuccess = (input, message1, message2) => {
+	formField.classList.remove("error");
+	formField.classList.add("success");
+	const render1 = document.querySelector(".form__render h2");
+	render1.textContent = message1;
+    const render2 = document.querySelector(".form__render h3");
+	render2.textContent = message2;
+}
 
 
-})
 
-// d) Todos los ingredientes de cada pizza (En cada iteración imprimir los ingredientes de la pizza actual).
 
-pizzas.forEach (pizzas => console.log(`La pizza ${pizzas.nombre} tiene como ingredientes: ${pizzas.ingredientes}`));
